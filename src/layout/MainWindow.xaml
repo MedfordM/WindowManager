@@ -1,0 +1,28 @@
+﻿<Window x:Name="window" x:Class="WindowManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar" 
+        xmlns:local="clr-namespace:WindowManager"
+        mc:Ignorable="d"
+        Title="WindowManager" Height="450" Width="800" Topmost="True" Closing="Window_Closing">
+
+    <Window.Resources>
+        <ContextMenu x:Key="TrayMenu">
+            <MenuItem Header="Exit" Click="Exit_Click"/>
+        </ContextMenu>
+        <local:TrayDoubleClick x:Key="TrayDoubleClick"/>
+    </Window.Resources>
+
+    <tb:TaskbarIcon x:Name="NotifyIcon"
+                    Visibility="Visible"
+                    ToolTipText="WindowManager"
+                    IconSource="/img/Icon1.ico"
+                    MenuActivation="LeftOrRightClick"
+                    DoubleClickCommand="{StaticResource TrayDoubleClick}"
+                    PopupActivation="DoubleClick"
+                    ContextMenu="{StaticResource TrayMenu}"
+
+      />
+</Window>
